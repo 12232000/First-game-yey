@@ -15,100 +15,21 @@
 //document.getElementById : elemt id gaar ni haij olno 
 // js oor paralelar ajillhd tohiromjgv cause single threaded 
 //togloomin bvh gazrat use hiigdh global huvisagchdiig end zarlay
-var ActivePlayer;
-var Score;//2 toglochiin tsugluulsn ono
-var roundScore;//online toglogchiin tsugliilj bga eeljin onoo 
-//togloom duussn esehiig shalgah toloviin huvisagch
+var activePlayer = 1;
+
+// tsugluulsn onoog saveleh 
+var score= [0,0];
+//toglogchiin eeljinde togolj bga onoog saveleh huvisagch 
+var roundScore = 0;
+
+var dice = Math.floor(Math.random() * 6) + 1 ;
+document.querySelector('#score-0').textContent = 0;
+document.querySelector('#score-1').textContent = 0;
+
+document.querySelector('#current-0').textContent=0;
+document.querySelector('#current-1').textContent=0;
 
 
-var diceDom = document.querySelector('.dice');
-diceDom.style.display='none';
+console.log('shoo ' + dice );
 
-//shoo shideh eventlistenr
-document.querySelector('.btn-roll').addEventListener('click', function (){
-    
-    
-    //1-6 dotrh toog sanamsrgv gargj irn
-    var diceNumber = Math.floor(Math.random()*6)+1;
-    //dice pic gargj irn 
-    diceDom.style.display='block';
-    //buusn shooni toog gargj irn 
-diceDom.src= 'dice-' + diceNumber + '.png';
 
-// eeljiin  onoog change hih 
-if(diceNumber !== 1 )
-{
-    roundScore= roundScore + diceNumber;
-    document.getElementById('current-' + ActivePlayer).textContent= roundScore;
-    //1 es ylgatai bhin bol buusn toog toglogchid nemj ogy
-
-    
-}else{
-    //1 buusn tul toglogchiin eeljig solin
-    // herve online toglolgch ni  0 bvl idevhte toglogchiig 1 bolgoroi. no bol online toglogchig 0 bolgoroi
-
-ActivePlayer === 0 ? (ActivePlayer =1 ) : (ActivePlayer=0);
-
-document.getElementById('current-'+ ActivePlayer).textContent= 0;
-//red tsegig shiljvvlya
-document.querySelector('.player-0-panel').classList.toggle('active');//toggle ni bvl hasn bhgv bol nemdg
-document.querySelector('.player-1-panel').classList.toggle('active');
-//shoog tvr alga bolgono
-diceDom.style.display='none';
-}
-
-//hold buttoni eventlistner 
-document
-.querySelector('.btn-hold').addEventListener('click', function(){
-    //tovch darsn toglolgchiin eeljiin onog global onoon  der ni nemj ogn 
-    Score[ActivePlayer]= Score[ActivePlayer]+ roundScore;
-    // delgets der onoog ni oorhiln 
-    document.getElementById('score-'+ ActivePlayer).textContent=Score[ActivePlayer];
-    roundScore=0;
-    document.getElementById('current-'+ActivePlayer).textContent=0;
-    switchToNextPlayer();
-    //toglogch hojson esehiig shalgah
-    if(Score[ActivePlayer] >=10){
-        //nerni orond wiiner 
-        document.getElementById('name-'+ ActivePlayer).textContent='Winner';
-        document.querySelector('.player-'+ ActivePlayer+'-panel').classList.add('Winner');
-    }else{
-        // switchToNextPlayer();
-    }
-    
-})
-//togloh eeljiig draagin hvnlv chiglvvln 
-
-// switchToNextPlayer();
-function switchToNextPlayer(){
-    roundScore= 0;
-    document.getElementById('current-'+ActivePlayer).textContent=0;
-    ActivePlayer ===0 ? (ActivePlayer=1) : (ActivePlayer=0);
-    document.querySelector('.player-0-panel').classList.toggle('active');
-    document.querySelector('.player-1-panel').classList.toggle('active');
-diceDom.style.display='none';
-
-}
-} );
-//new game ehlvvlh 
-document.querySelector('.btn-new').addEventListener('click' , function(){
-   Score=[0,0];
-   roundScore=0;
-   ActivePlayer=0;
-
-})
-function initGame(){
-
-isGameOver=false;
-
-     ActivePlayer = 0;
- Score =[0, 0];
- roundScore= 0;
-var diceNumber =  Math.floor(Math.random() * 6 + 1);
-
-//ehlehed beldya
-document.getElementById("score-0").textContent='0';
-document.getElementById('score-1').textContent='0';
-document.getElementById('current-0').textContent='0';
-document.getElementById('current-1').textContent='0';
-}
