@@ -16,20 +16,27 @@
 // js oor paralelar ajillhd tohiromjgv cause single threaded 
 //togloomin bvh gazrat use hiigdh global huvisagchdiig end zarlay
 var activePlayer = 1;
-
 // tsugluulsn onoog saveleh 
 var score= [0,0];
 //toglogchiin eeljinde togolj bga onoog saveleh huvisagch 
 var roundScore = 0;
 
-var dice = Math.floor(Math.random() * 6) + 1 ;
-document.querySelector('#score-0').textContent = 0;
-document.querySelector('#score-1').textContent = 0;
+var diceNumber = Math.floor(Math.random() * 6) + 1 ;
 
-document.querySelector('#current-0').textContent=0;
-document.querySelector('#current-1').textContent=0;
+document.getElementById('score-0').textContent='0';
+document.getElementById('score-1').textContent ='0';
+document.getAnimations('current-0').textContent='0';
+document.getElementById('current-1').textContent='0';
+
+// document.querySelector('.dice').style.display = 'none ';
+ document.querySelector('.btn-roll').addEventListener('click' ,  function (){
+    var diceNumber = Math.floor(Math.random() * 6) + 1;
 
 
-console.log('shoo ' + dice );
+    
+ })
+ 
+
+
 
 
