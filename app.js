@@ -14,29 +14,34 @@
 
 //document.getElementById : elemt id gaar ni haij olno 
 // js oor paralelar ajillhd tohiromjgv cause single threaded 
-//togloomin bvh gazrat use hiigdh global huvisagchdiig end zarlay
-var activePlayer = 1;
+//togloomin bvh gazrat use hiigdh global huvisagchdiig end zarla naachi
+var activePlayer = 0;
+
 // tsugluulsn onoog saveleh 
 var score= [0,0];
+
 //toglogchiin eeljinde togolj bga onoog saveleh huvisagch 
 var roundScore = 0;
 
 var diceNumber = Math.floor(Math.random() * 6) + 1 ;
-
 document.getElementById('score-0').textContent='0';
 document.getElementById('score-1').textContent ='0';
 document.getAnimations('current-0').textContent='0';
 document.getElementById('current-1').textContent='0';
 
-// document.querySelector('.dice').style.display = 'none ';
  document.querySelector('.btn-roll').addEventListener('click' ,  function (){
     var diceNumber = Math.floor(Math.random() * 6) + 1;
+   document.querySelector('.dice').style.display= 'block';
+   document.querySelector('.dice').src ='dice-' + diceNumber + '.png' ;
+   if(diceNumber !== 1){
+roundScore= roundScore + diceNumber;
+document.getElementById('current-0').textContent= roundScore;
+   }else {
 
-
-    
+   }
  })
+
  
 
-
-
+ 
 
