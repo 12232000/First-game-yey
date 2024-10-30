@@ -55,6 +55,13 @@ diceDom.style.display='none';
    }
  })
 
+ //hold button eventlistener
+
+ document.querySelector('.btn-hold').addEventListener('click' ,  function(){
+   //tsugluulsn onoogo saveleh
+   r
+ });
+
  
 
  
