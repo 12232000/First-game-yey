@@ -50,9 +50,15 @@ document.getElementById('current-' + activePlayer).textContent= roundScore;
  document.querySelector('.btn-hold').addEventListener('click' ,  function(){
    //tsugluulsn onoogo saveleh
    score[activePlayer] = score[activePlayer] + roundScore;
-   document.getElementById('score-' + activePlayer).textContent=score[activePlayer] ;
-   switchPlayer();
- });
+   document.getElementById('score-'+ activePlayer).textContent=score[activePlayer];
+   
+   if(score[activePlayer] >= 20){
+      document.getElementById('name-' + activePlayer).textContent='Winner <3 ';
+      document.getElementById('.player-' + activePlayer + '-panel').classList.add('Winner')
+   }else{switchPlayer();}
+
+
+ })
 
  function switchPlayer(){
    roundScore=0; document.getElementById('current-' + activePlayer).textContent = 0;
