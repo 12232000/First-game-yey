@@ -39,30 +39,32 @@ diceDom.style.display='none';
    if(diceNumber !== 1){
 roundScore= roundScore + diceNumber;
 document.getElementById('current-' + activePlayer).textContent= roundScore;
-   }else {
-
-      roundScore=0;
-      document.getElementById('current-' + activePlayer).textContent = 0;
-activePlayer === 0 ? (activePlayer =1) : (activePlayer=0) ;
-
-document.querySelector('.player-0-panel').classList.toggle('active');
-document.querySelector('.player-1-panel').classList.toggle('active');
-
-diceDom.style.display='none';
-
-
-
    }
- })
+   else {
+
+      switchPlayer(); 
+
+   }})
 
  //hold button eventlistener
-
  document.querySelector('.btn-hold').addEventListener('click' ,  function(){
    //tsugluulsn onoogo saveleh
-   r
+   score[activePlayer] = score[activePlayer] + roundScore;
+   document.getElementById('score-' + activePlayer).textContent=score[activePlayer] ;
+   switchPlayer();
  });
 
- 
+ function switchPlayer(){
+   roundScore=0; document.getElementById('current-' + activePlayer).textContent = 0;
+
+   activePlayer = activePlayer ^ 1 ;
+document.querySelector('.player-0-panel').classList.toggle('active');
+document.querySelector('.player-1-panel').classList.toggle('active');
+diceDom.style.display='none';
+ }
+
 
  
 
+ 
+ 
